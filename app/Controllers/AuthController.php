@@ -30,15 +30,18 @@ class AuthController extends BaseController
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
+        $pass = (string) $this->request->getPost('password');
+
         $user = $this->userModel->verifyLogin(
             (string) $this->request->getPost('email'),
-            (string) $this->request->getPost('password'),
+            $pass,
         );
 
         if ($user === null) {
             return redirect()->back()->withInput()->with('error', 'Email atau password salah.');
         }
 
+        // ini yang buat kita bisa login
         session()->regenerate();
         session()->set([
             'user_id'    => $user['id'],

@@ -83,6 +83,9 @@ class UserModel extends Model
     {
         $user = $this->findByEmail($email);
 
+        // password_verify($password, $user['password'])
+        // $password = itu dari atas / params = "password"
+        // $user['password'] = "$2y$12$O5zRgM8lY28dqzq1BElao.hP1hLGzwGuWYheC0v337NDt4aCMGMzC"
         if ($user === null || ! password_verify($password, $user['password'])) {
             return null;
         }

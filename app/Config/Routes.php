@@ -6,8 +6,8 @@ use CodeIgniter\Router\RouteCollection;
 
 // Halaman untuk tamu (belum login)
 $routes->group('', ['filter' => 'guest'], static function ($routes) {
-    $routes->get('login', 'AuthController::login');
-    $routes->post('login', 'AuthController::attemptLogin');
+    $routes->get('login', 'AuthController::login'); // halaman
+    $routes->post('login', 'AuthController::attemptLogin'); // proses
     $routes->get('register', 'AuthController::register');
     $routes->post('register', 'AuthController::attemptRegister');
 });
