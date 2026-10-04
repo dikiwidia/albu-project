@@ -3,4 +3,17 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
+
+// Halaman untuk tamu (belum login)
+$routes->group('', ['filter' => 'guest'], static function ($routes) {
+    $routes->get('login', 'AuthController::login');
+    $routes->post('login', 'AuthController::attemptLogin');
+    $routes->get('register', 'AuthController::register');
+    $routes->post('register', 'AuthController::attemptRegister');
+});
+
+// Halaman yang membutuhkan login
+$routes->group('', ['filter' => 'auth'], static function ($routes) {
+    $routes->get('/', 'HomeController::index');
+    $routes->post('logout', 'AuthController::logout');
+});
