@@ -25,7 +25,8 @@
                     </svg>
                     Dashboard
                 </a>
-                <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-slate-800 hover:text-white">
+                <a href="<?= site_url('users') ?>"
+                    class="flex items-center gap-3 rounded-lg px-3 py-2 <?= url_is('users*') ? 'bg-slate-800 text-white' : 'hover:bg-slate-800 hover:text-white' ?>">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-5-3.87M9 20H4v-2a4 4 0 015-3.87m8-4.13a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
